@@ -1,17 +1,17 @@
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Int16
+from std_msgs.msg import String
 
 
-rclpy.init()
-node = Node("listener")
+class ISS_position_listener(Node):
+    def __init__(self):
+        super().__init__("iss_position_listener")
+        self.create_subscription(String,"now_position",self.listener_callback,10)
 
-
-def cb(msg):
-    global node
-    node.get_logger().info("Listen: %d" %msg.data)
-
+    def listener_callback(self,msg):
+        self.get_logger().info(f"{msg.data}")
 
 def main():
-    sub = node.create_subscription(Int16 ,"countup", cb, 10)
+    rclpy.init()
+    node = ISS_position_listener()
     rclpy.spin(node)
