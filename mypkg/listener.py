@@ -13,5 +13,5 @@ class ISSPositionListener(Node):
 
 def main():
     rclpy.init()
-    node = ISS_position_listener()
+    node = ISSPositionListener()
     rclpy.spin(node)
