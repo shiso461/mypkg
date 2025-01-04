@@ -29,7 +29,7 @@ ros2 run mypkg iss_position
 ```
 トピックの内容は以下のコマンドで確認してください
 ```
-ros2 topic echo now_positioin
+ros2 topic echo now_position
 ```
 ```
 data: 'ISS Position: lat=27.3339, lon=-24.3420'
