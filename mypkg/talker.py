@@ -3,15 +3,16 @@ from rclpy.node import Node
 import requests
 from std_msgs.msg import String
 
-class ISS_position(Node):
+class ISSPositionPublisher(Node):
     def __init__(self):
-        super().__init__("ISS_position")
+        super().__init__("iss_position_publisher")
         self.pub = self.create_publisher(String, "now_position", 10)
-        self.create_timer(1.0, self.publish_ISS_position)
+        self.create_timer(1.0, self.publish_iss_position)
 
-    def publish_ISS_position(self):
-        data = self.get_iss_position()
-        self.pub.publish(String(data=data))
+    def publish_iss_position(self):
+        msg = String()
+        msg.data = self.get_iss_position()
+        self.pub.publish(msg)
 
     def get_iss_position(self):
         response = requests.get("http://api.open-notify.org/iss-now.json")
@@ -20,9 +21,9 @@ class ISS_position(Node):
             position = iss_data["iss_position"]
             return f"ISS Position: lat={position['latitude']}, lon={position['longitude']}"
         else:
-            self.get_logger().warn(f"Failed to fetch ISS position, status code: {response.status_code}")
             return "Failed to fetch ISS position"
+
 def main():
     rclpy.init()
-    node = ISS_position()
+    node = ISSPositionPublisher()
     rclpy.spin(node)
