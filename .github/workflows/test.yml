@@ -7,23 +7,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup ROS workspace
+      - name: Install pip and requests
         run: |
-          mkdir -p /root/ros2_ws/src
+          apt-get update
+          apt-get install -y python3-pip
+          pip3 install requests
+
+      - name: build and test
+        run: |
           rsync -av ./ /root/ros2_ws/src/mypkg/
-          cd /root/ros2_ws
-          rosdep update
-          rosdep install --from-paths src --ignore-src -r -y
-          colcon build
-          source /opt/ros/humble/setup.bash
-          source install/setup.bash
-
-      - name: Install Python dependencies
-        run: |
-          pip install requests
-
-      - name: Run tests
-        run: |
           cd /root/ros2_ws
           bash -xv ./src/mypkg/test/test.bash /root
 
