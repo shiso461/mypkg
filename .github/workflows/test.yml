@@ -7,12 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup Python and Install pip
-        run: |
-          apt-get update
-          apt-get install -y python3-pip
-          pip3 install --upgrade pip
-
       - name: Setup ROS workspace
         run: |
           mkdir -p /root/ros2_ws/src
@@ -26,7 +20,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip3 install requests
+          pip install requests
 
       - name: Run tests
         run: |
