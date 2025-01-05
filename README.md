@@ -1,4 +1,5 @@
-# 国際宇宙ステーションの現在位置
+# mypkg
+## 国際宇宙ステーションの現在位置
 [![test](https://github.com/shiso461/mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/shiso461/mypkg/actions/workflows/test.yml)
 
 ## 概要
