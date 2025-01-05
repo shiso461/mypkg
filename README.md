@@ -1,4 +1,4 @@
-# 国際宇宙ステーションの現在位置(ISS_Position)
+# 国際宇宙ステーションの現在位置
 [![test](https://github.com/shiso461/mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/shiso461/mypkg/actions/workflows/test.yml)
 
 ## 概要
@@ -6,30 +6,26 @@
 - [Open Notify API](http://api.open-notify.org/)より取得した国際宇宙ステーション(ISS)の現在位置をトピックにパブリッシュします
 
 ## ノード
-- ### ISSPositionPublisher
+- ### iss_position_publisher
 取得したISSの現在位置を1秒ごとにnow_positionトピックにパブリッシュします．
 取得する現在位置の内容は緯度(latitude)と経度(longitude)です．
 
 ## トピック
 - ### now_position
-ISSPositionPublisherノードからパブリッシュされた，以下の形式の情報を持ちます．
+iss_position_publisherノードからパブリッシュされた，以下の形式の情報を持ちます．
 ```
 ISS Position: lat=<latitude>, lon=<longitude>
 ```
 
 
-## 使用方法
-ROS 2のパッケージです．各自のROS 2ワークスペースにて以下のコマンドでクローンし,その後ビルドしてください．
-```
-git clone https://github.com/shiso461/mypkg.git
-```
+## 実行方法
 実行は以下のコマンドで行えます．
 ```
-ros2 run mypkg iss_position
+$ ros2 run mypkg iss_position
 ```
 トピックの内容は以下のコマンドで確認してください
 ```
-ros2 topic echo now_position
+$ ros2 topic echo now_position
 ```
 ```
 data: 'ISS Position: lat=27.3339, lon=-24.3420'
