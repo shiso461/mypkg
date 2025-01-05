@@ -41,9 +41,9 @@ listener.pyおよび，talk_listen.launch.pyはテスト用です．
 
 ## テスト済み環境
 - Ubuntu 22.04 LTS
-  - ROS 2 Humble (GitHub Actions)
+  - ROS 2 Humble （GitHub Actions）
 - Ubuntu 24.04 LTS
-  - ROS 2 Jazzy (開発環境)
+  - ROS 2 Jazzy （開発環境）
 
 ## ライセンス
 - このソフトウェアパッケージは，3条項BSDライセンスの下，再頒布および使用が許可されます．
